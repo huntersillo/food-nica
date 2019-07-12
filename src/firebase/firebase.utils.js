@@ -1,0 +1,23 @@
+import firebase from "firebase/app";
+// import "firebase/firestore";
+import "firebase/auth";
+const config = {
+  apiKey: "AIzaSyDKnheC-1mjEda2Un3tSBWAta0PdRi0yhc",
+  authDomain: "food-nica.firebaseapp.com",
+  databaseURL: "https://food-nica.firebaseio.com",
+  projectId: "food-nica",
+  storageBucket: "",
+  messagingSenderId: "457477034008",
+  appId: "1:457477034008:web:9dd12981f38c2f91"
+};
+
+firebase.initializeApp(config);
+
+export const auth = firebase.auth();
+// export const firestore = firestore.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export default firebase;
